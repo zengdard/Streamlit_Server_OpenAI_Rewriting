@@ -3,7 +3,7 @@ import openai
 import streamlit as st
 
 # Votre clé d'API pour OpenAI
-openai.api_key = 'your-openai-api-key'
+openai.api_key = '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'
 
 # Widget pour saisir l'ID du tweet
 tweet_id = st.text_input('Enter Tweet ID')
