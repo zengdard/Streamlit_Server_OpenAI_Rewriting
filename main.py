@@ -19,7 +19,7 @@ api = tweepy.API(auth)
 # specified by the requested ID or list of IDs
 name = st.text_input('name')
 tweet_id = st.text_input('Enter Tweet ID')
-if tweet_ids and name :
+if tweet_id and name :
     # Récupération des commentaires
     replies=[]
     for tweet in tweepy.Cursor(api.search,q='to:'+name, result_type='recent').items(1000):
