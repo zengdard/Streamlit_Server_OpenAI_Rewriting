@@ -11,9 +11,9 @@ consumer_secret = 'AhjaPSZBmbGfaj4CmmFZjjwv4oypS7dmT2MNVGJfPBrL3h9dtg'
 access_token = '1526862349944205313-pGiuUmUFoMhS04MFLRIbq3JKZq75w3'
 access_token_secret = 'rwhiGeTpF16oWD59mD7nv4RVFnLrv3jXlT993elPqPSTc'
 
-
-# Authentification OAuth1
-#auth = OAuth1(consumer_key, consumer_secret, access_token, access_token_secret)
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
 
 client = tweepy.Client(
     consumer_key=consumer_key, consumer_secret=consumer_secret,
@@ -31,7 +31,7 @@ tweet_ids = st.text_input('Enter Tweet ID')
 
 if tweet_ids:
     # Récupération des commentaires
-    comments = clients.get_tweets(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
+    comments = api.get_tweets(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
 
     # Création d'une liste de commentaires
     comments_list = comments.data
