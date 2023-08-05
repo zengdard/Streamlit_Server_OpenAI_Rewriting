@@ -13,13 +13,12 @@ client = tweepy.Client(bearer_token)
 
 # By default, only the ID and text fields of each Tweet will be returned
 # Additional fields can be retrieved using the tweet_fields parameter
-response = client.get_tweet(tweet_ids, tweet_fields=["comments"])
 # Widget pour saisir l'ID du tweet
 tweet_ids = st.text_input('Enter Tweet ID')
 
 if tweet_id:
     # Récupération des commentaires
-    comments = client.get_tweet(tweet_ids, tweet_fields=["comments"])
+    comments = client.get_tweet(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
 
     # Création d'une liste de commentaires
     comments_list = comments.data
