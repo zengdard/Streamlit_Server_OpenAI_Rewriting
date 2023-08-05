@@ -15,34 +15,17 @@ auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-bearer_token = "AAAAAAAAAAAAAAAAAAAAAHTrcgEAAAAAkH71IoBq0AvFAjotzMXCnF9rfkU%3D5sEedVO5KhjsjBWLJR1YSFnOBZroXCScuBGOvn7YxjrwwCM2TB"
-
-
-# By default, only the ID and text fields of each Tweet will be returned
-# Additional fields can be retrieved using the tweet_fields parameter
-# Widget pour saisir l'ID du tweet
-
-client = tweepy.Client(bearer_token)
-
-# Get Tweets
-
 # This endpoint/method returns a variety of information about the Tweet(s)
 # specified by the requested ID or list of IDs
-tweet_ids = st.text_input('Enter Tweet ID')
-
-tweet_ids = [1460323737035677698, 1293593516040269825, 1293595870563381249]
-
-# By default, only the ID and text fields of each Tweet will be returned
-# Additional fields can be retrieved using the tweet_fields parameter
-response = client.get_tweets(tweet_ids, tweet_fields=["created_at"])
-
-for tweet in response.data:
-    print(tweet.id, tweet.created_at)
-if tweet_ids :
+name = st.text_input('name')
+tweet_id = st.text_input('Enter Tweet ID')
+if tweet_ids and name :
     # Récupération des commentaires
-    comments =  client.get_tweets(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
-
-    # Création d'une liste de commentaires
+    replies=[]
+    for tweet in tweepy.Cursor(api.search,q='to:'+name, result_type='recent').items(1000):
+        if hasattr(tweet, 'in_reply_to_status_id_str'):
+            if (tweet.in_reply_to_status_id_str==tweet_id):
+                replies.append(tweet)
     
     print(replies)
     comments_list = replies
