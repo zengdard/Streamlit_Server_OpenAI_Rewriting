@@ -6,9 +6,19 @@ import tweepy
 # Votre clé d'API pour OpenAI
 openai.api_key = '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'
 
-bearer_token = "AAAAAAAAAAAAAAAAAAAAAHTrcgEAAAAAym3cZ0Rk0pjUFCoHJ7DFkwJsKt4%3DKTFUaNIeS8WLx86KtV0HMKphp4clrqifnzc3cmaDk14dI5gobE"
+consumer_key = 'AknQg4BbBgDnhJ8W8O6p8D7tS'
+consumer_secret = 'AhjaPSZBmbGfaj4CmmFZjjwv4oypS7dmT2MNVGJfPBrL3h9dtg'
+access_token = '1526862349944205313-pGiuUmUFoMhS04MFLRIbq3JKZq75w3'
+access_token_secret = 'rwhiGeTpF16oWD59mD7nv4RVFnLrv3jXlT993elPqPSTc'
 
-client = tweepy.Client(bearer_token)
+
+# Authentification OAuth1
+#auth = OAuth1(consumer_key, consumer_secret, access_token, access_token_secret)
+
+client = tweepy.Client(
+    consumer_key=consumer_key, consumer_secret=consumer_secret,
+    access_token=access_token, access_token_secret=access_token_secret
+)
 
 
 # By default, only the ID and text fields of each Tweet will be returned
