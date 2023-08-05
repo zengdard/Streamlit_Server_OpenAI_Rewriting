@@ -17,7 +17,10 @@ api = tweepy.API(auth)
 
 bearer_token = "AAAAAAAAAAAAAAAAAAAAAHTrcgEAAAAAkH71IoBq0AvFAjotzMXCnF9rfkU%3D5sEedVO5KhjsjBWLJR1YSFnOBZroXCScuBGOvn7YxjrwwCM2TB"
 
-clients = tweepy.Client(bearer_token)
+client = tweepy.Client(
+    consumer_key=consumer_key, consumer_secret=consumer_secret,
+    access_token=access_token, access_token_secret=access_token_secret
+)
 
 # By default, only the ID and text fields of each Tweet will be returned
 # Additional fields can be retrieved using the tweet_fields parameter
@@ -25,7 +28,7 @@ clients = tweepy.Client(bearer_token)
 tweet_ids = st.text_input('Enter Tweet ID')
 if tweet_ids :
     # Récupération des commentaires
-    comments = clients.get_tweets(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
+    comments = client.get_tweets(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
 
     # Création d'une liste de commentaires
     
