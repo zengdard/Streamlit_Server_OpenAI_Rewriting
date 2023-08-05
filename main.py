@@ -19,11 +19,11 @@ tweet_ids = st.text_input('Enter Tweet ID')
 
 if tweet_id:
     # Récupération des commentaires
-    comments = api.search(q=f'to:{tweet_id}', result_type='recent', count=100)
+    comments = client.get_tweet(tweet_ids, tweet_fields=["comments"])
 
     # Création d'une liste de commentaires
-    comments_list = [comment.text for comment in comments]
-
+    comments_list = comments.data
+    print(comments_list)
     # Construction du prompt pour GPT-3.5
     prompt = "Given the following comments on a tweet, identify which ones provide valuable context and which ones are irrelevant:\n"
     for i, comment in enumerate(comments_list):
