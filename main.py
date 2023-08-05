@@ -23,16 +23,9 @@ clients = tweepy.Client(bearer_token)
 # Additional fields can be retrieved using the tweet_fields parameter
 # Widget pour saisir l'ID du tweet
 tweet_ids = st.text_input('Enter Tweet ID')
-name = st.text_input('Enter Tweet Name')
-if tweet_ids and name :
-        
-    replies=[]
-    for tweet in tweepy.Cursor(api.search,q='to:'+name, result_type='recent', timeout=999999).items(1000):
-        if hasattr(tweet, 'in_reply_to_status_id_str'):
-            if (tweet.in_reply_to_status_id_str==tweet_id):
-                replies.append(tweet)
+if tweet_ids :
     # Récupération des commentaires
-    #comments = api.get_tweets(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
+    comments = clients.get_tweets(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
 
     # Création d'une liste de commentaires
     
