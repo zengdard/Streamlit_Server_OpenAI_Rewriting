@@ -16,7 +16,7 @@ client = tweepy.Client(bearer_token)
 # Widget pour saisir l'ID du tweet
 tweet_ids = st.text_input('Enter Tweet ID')
 
-if tweet_id:
+if tweet_ids:
     # Récupération des commentaires
     comments = client.get_tweet(tweet_ids, tweet_fields=["in_reply_to_user_id", "referenced_tweets", "context_annotations", "edit_history_tweet_ids"])
 
