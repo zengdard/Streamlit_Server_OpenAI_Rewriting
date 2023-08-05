@@ -6,19 +6,16 @@ import tweepy
 # Votre clé d'API pour OpenAI
 openai.api_key = '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'
 
-consumer_key = 'oM33jzwGriVxgRTHnI1MKRGof'
-consumer_secret='srVBaeZ3zRN3lfhecAQBVVzzVhoNJyRW8SfloskHN242MoJutk'
+bearer_token = "AAAAAAAAAAAAAAAAAAAAAHTrcgEAAAAAym3cZ0Rk0pjUFCoHJ7DFkwJsKt4%3DKTFUaNIeS8WLx86KtV0HMKphp4clrqifnzc3cmaDk14dI5gobE"
 
-access_token='1538514143816425472-aizUWwWArAtu7lUGFCUw2YwXItQn5N'
-access_token_secret='iZz6zqknZtHPt49bSkBYhn2VO7MqRzcOdEhu7zw11B3jH'
+client = tweepy.Client(bearer_token)
 
-# Authentification à Twitter
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
-api = tweepy.API(auth)
 
+# By default, only the ID and text fields of each Tweet will be returned
+# Additional fields can be retrieved using the tweet_fields parameter
+response = client.get_tweet(tweet_ids, tweet_fields=["comments"])
 # Widget pour saisir l'ID du tweet
-tweet_id = st.text_input('Enter Tweet ID')
+tweet_ids = st.text_input('Enter Tweet ID')
 
 if tweet_id:
     # Récupération des commentaires
