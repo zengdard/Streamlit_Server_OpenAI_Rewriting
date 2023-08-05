@@ -28,7 +28,7 @@ clients = tweepy.Client(bearer_token)
 # Additional fields can be retrieved using the tweet_fields parameter
 # Widget pour saisir l'ID du tweet
 tweet_ids = st.text_input('Enter Tweet ID')
-name = st.text_input('Enter Tweet ID')
+name = st.text_input('Enter Tweet Name')
 if tweet_ids and name :
         
     replies=[]
