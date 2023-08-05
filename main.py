@@ -22,7 +22,7 @@ tweet_id = st.text_input('Enter Tweet ID')
 if tweet_id and name :
     # Récupération des commentaires
     replies=[]
-    for tweet in tweepy.Cursor(api.search,q='to:'+name, result_type='recent').items(1000):
+    for tweet in tweepy.Cursor(api.search_tweets,q='to:'+name, result_type='recent').items(1000):
         if hasattr(tweet, 'in_reply_to_status_id_str'):
             if (tweet.in_reply_to_status_id_str==tweet_id):
                 replies.append(tweet)
