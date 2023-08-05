@@ -13,7 +13,7 @@ access_token_secret = 'rwhiGeTpF16oWD59mD7nv4RVFnLrv3jXlT993elPqPSTc'
 
 
 # Authentification OAuth1
-auth = OAuth1(consumer_key, consumer_secret, access_token, access_token_secret)
+#auth = OAuth1(consumer_key, consumer_secret, access_token, access_token_secret)
 
 client = tweepy.Client(
     consumer_key=consumer_key, consumer_secret=consumer_secret,
