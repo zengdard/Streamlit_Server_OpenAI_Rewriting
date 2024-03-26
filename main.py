@@ -3,7 +3,7 @@ import streamlit as st
 
 
 # Votre clé d'API pour OpenAI
-openai.api_key = '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'
+openai.api_key = ''
 
 def rewrite_text_objectively(text):
     try:
